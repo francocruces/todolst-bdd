@@ -1,0 +1,10 @@
+{% if tasks %}
+    {% for task in tasks %}
+            <p>{{ task.name }}</p>
+    {% endfor %}
+{% endif %}
+<form action="{% url "add_task" %}" method="POST">
+    {% csrf_token %}
+        Nombre: <input type="text" name="name" id="new_task">
+        <button type="submit" id="add_task">Agregar</button>
+ </form>
