@@ -12,6 +12,19 @@ def step_impl(context,field,text,button):
 
 
 @then(u'I should see "{text}"')
-def step_impl(context,text):
+def step_impl(context, text):
     br = context.browser
     assert text in br.page_source
+
+@given(u'I go to the "{url}" and there is already a task "{task}"')
+def step_impl(context, url, task):
+    br = context.browser
+    br.get(context.base_url + url)
+    br.find_element_by_id('new_task').send_keys(task)
+    br.find_element_by_id('add_task').click()
+
+@then(u'I should see both "{text}" and "{text2}"')
+def step_impl(context, text, text2):
+    br = context.browser
+    assert text in br.page_source
+    assert text2 in br.page_source
