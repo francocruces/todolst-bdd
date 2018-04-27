@@ -1,1 +1,1 @@
-web: gunicorn todolist-bdd.wsgi --log-file gunicorn.log
+web: gunicorn todolist-bdd.wsgi --log-file -
